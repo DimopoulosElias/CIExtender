@@ -1,0 +1,12 @@
+POST /commix-testbed/scenarios/regular/POST/blind_json.php HTTP/1.1
+Host: local.con
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://local.con/commix-testbed/index.php
+Accept-Encoding: gzip, deflate
+Accept-Language: el,en-US;q=0.9,en;q=0.8
+Connection: close
+Content-Length: 12
+
+{"addr":"*"}

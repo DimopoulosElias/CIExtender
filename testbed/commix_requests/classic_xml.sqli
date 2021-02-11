@@ -1,0 +1,10 @@
+POST /classic_xml.php HTTP/1.1
+Host: 157.230.2.20
+Content-Type: application/xml; charset=utf-8
+Content-Length: 99
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ping>
+ <addr>*</addr>
+ <count>4</count>
+</ping>

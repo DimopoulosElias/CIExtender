@@ -1,0 +1,10 @@
+GET /commix-testbed/scenarios/user-agent/ua(eval).php HTTP/1.1
+Host: local.con
+Upgrade-Insecure-Requests: 1
+User-Agent: *
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://local.con/commix-testbed/index.php
+Accept-Encoding: gzip, deflate
+Accept-Language: el,en-US;q=0.9,en;q=0.8
+Connection: close
+
