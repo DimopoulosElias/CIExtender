@@ -1,0 +1,4 @@
+# queries.xml
+## SHELL
+- hex query  (used in --hex): Does not work in time based exfiltration. Probably because of the loop which is being used.
+- Regarding the "expr substr" and "expr lenght", which could make queries more simple: These are three special functions which have been added to the Berkeley version of expr. I was thinking to keep queries in a way that can probably work in the majority of the systems. Keep in mind that SQLMap uses the same query for each database. This means that we cannot change the query which is being used for a specific database (queries.xml) with every payload (payloads/*.xml) we test.
